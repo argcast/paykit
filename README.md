@@ -1,7 +1,7 @@
 
 # 💳 Paykit (WIP)
 
-> A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to **Express**, **Astro**, and more.
+> A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to **Express** and more.
 
 ## 🧠 Why this project exists
 
@@ -12,7 +12,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 
 We believe Stripe can feel simple, safe, and sane — if you abstract the hard parts correctly.
 
-This project is **heavily inspired by [Theo’s blog post: "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-sane-setup)**. His article lays out the clearest approach we’ve seen for managing the split-brain nature of Stripe data and your app state. **Paykit builds on that idea** to provide a fully installable, framework-ready implementation.
+This project is **heavily inspired by [Theo’s: "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main)**. His article lays out the clearest approach we’ve seen for managing the split-brain nature of Stripe data and your app state. **Paykit builds on that idea** to provide a fully installable, framework-ready implementation.
 
 ---
 
@@ -44,7 +44,7 @@ See [`ROADMAP.md`](./ROADMAP.md) for upcoming integrations and contributions.
 ## 📜 Credits & License
 
 This project is **inspired by** and **built on top of** the implementation described in Theo’s post  
-➡️ [How I Stay Sane Implementing Stripe](https://github.com/t3dotgg/stripe-sane-setup)
+➡️ [How I Stay Sane Implementing Stripe](https://github.com/t3dotgg/stripe-recommendations/tree/main)
 
 We're not affiliated, but we found it too good not to build into a reusable package.
 
