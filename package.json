@@ -1,0 +1,31 @@
+{
+  "name": "paykit",
+  "version": "0.1.0",
+  "description": "CLI setup tool for Paykit Stripe integrations",
+  "files": ["dist"],
+  "bin": {
+    "paykit": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "stripe",
+    "cli",
+    "setup",
+    "payments",
+    "framework",
+    "integration"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^12.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.16",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
