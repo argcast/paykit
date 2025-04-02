@@ -1,9 +1,10 @@
 {
-  "name": "@argcast/paykit",
+  "name": "paykit-cli",
   "version": "0.1.0-alpha.0",
   "description": "CLI setup tool for Paykit Stripe integrations",
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "bin": {
     "paykit": "./dist/index.js"
