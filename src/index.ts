@@ -125,7 +125,7 @@ async function main() {
   }
 
   const frameworkKey = normalizeFrameworkKey(framework!);
-  const templateRoot = path.join(__dirname, "templates", frameworkKey);
+  const templateRoot = path.join(__dirname, "..", "templates", frameworkKey);
 
   const checkoutTemplate = path.join(
     templateRoot,
