@@ -1,0 +1,42 @@
+name: Build Next.js App
+
+on:
+  push:
+    branches:
+      - nextjs
+  pull_request:
+    branches:
+      - nextjs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        working-directory: ./examples/nextjs
+        run: pnpm install
+
+      - name: Build project
+        working-directory: ./examples/nextjs
+        env: 
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          KV_REST_API_TOKEN: ${{ secrets.KV_REST_API_TOKEN }}
+          KV_REST_API_URL: ${{ secrets.KV_REST_API_URL }}
+          PRICE_ID: ${{ secrets.PRICE_ID }}
+
+        run: pnpm run build
+

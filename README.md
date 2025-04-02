@@ -1,52 +1,52 @@
+[![Build Next.js App](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml/badge.svg)](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml)
 
-# 💳 Paykit (WIP)
+# Paykit (WIP)
 
-> A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to **Express** and more.
+A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to more frameworks in the future.
 
-## 🧠 Why this project exists
+## Why this project exists
 
 Stripe is powerful — but integrating it properly is often a painful mix of:
-- ✅ boilerplate code
-- ❓ unclear event flow
-- 🤯 race conditions between webhooks and frontend state
 
-We believe Stripe can feel simple, safe, and sane — if you abstract the hard parts correctly.
+- Boilerplate code
+- Unclear event flow
+- Race conditions between webhooks and frontend state
 
-This project is **heavily inspired by [Theo’s: "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main)**. His article lays out the clearest approach we’ve seen for managing the split-brain nature of Stripe data and your app state. **Paykit builds on that idea** to provide a fully installable, framework-ready implementation.
+This project is inspired by [Theo’s "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main), which lays out the clearest approach we’ve seen for managing the split-brain nature of Stripe data and your app state. Paykit builds on that idea to provide a fully installable, framework-ready implementation.
 
----
+## What Paykit does
 
-## 🚀 What Paykit does
+- Creates and syncs Stripe customers with your user IDs
+- Handles checkout session creation with the proper customer binding
+- Provides a single `syncStripeDataToKV(customerId)` method to eliminate inconsistencies
+- Responds to relevant Stripe webhook events
+- Offers prebuilt route handlers and helpers tailored to each supported framework
+- You should carefully read [things that are still your problem](https://github.com/t3dotgg/stripe-recommendations?tab=readme-ov-file#things-that-are-still-your-problem) even we preset most of them in your `env.local` file.
 
-- 🔒 Creates and syncs Stripe customers with your user IDs
-- 💳 Handles checkout session creation with the proper customer binding
-- 🔁 Provides a single `syncStripeDataToKV(customerId)` method to eliminate inconsistencies
-- ⚡ Responds to relevant Stripe webhook events
-- 🧱 Offers prebuilt route handlers and helpers tailored to each supported framework
+## What Paykit is *not*
 
----
+Paykit is not a full-scale, all-in-one Stripe system for your entire SaaS or app.
 
-## 📦 Supported Frameworks (Work in Progress)
+It’s the minimal foundation you need to integrate Stripe safely and sanely — a starting point to get you up and running without wandering through Stripe’s documentation desert.  
+Think of it as the groundwork that saves you hours of setup, so you can focus on building what makes your product unique.
 
-| Framework     | Status      |
-|---------------|-------------|
-| Next.js       | ✅ In progress (MVP) |
-| Express       | 🟡 Planned    |
+## Supported Frameworks (Work in Progress)
 
----
+| Framework | Status              | Demo                              |
+|-----------|---------------------|-----------------------------------|
+| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-demo.vercel.app) |
+| Express   | 🟡 Planned           | –                                 |
 
-## 🗺️ Project Roadmap
+## Project Roadmap
 
-See [`ROADMAP.md`](./ROADMAP.md) for upcoming integrations and contributions.
+See [`ROADMAP.md`](https://github.com/argcast/paykit/tree/main/ROADMAP.md) for upcoming integrations and contributions.
 
----
+## Credits & License
 
-## 📜 Credits & License
+Inspired by Theo’s guide:  
+[How I Stay Sane Implementing Stripe](https://github.com/t3dotgg/stripe-recommendations/tree/main)
 
-This project is **inspired by** and **built on top of** the implementation described in Theo’s post  
-➡️ [How I Stay Sane Implementing Stripe](https://github.com/t3dotgg/stripe-recommendations/tree/main)
-
-We're not affiliated, but we found it too good not to build into a reusable package.
+I am not affiliated — just found it too good not to build into a reusable package.
 
 MIT Licensed.
 
