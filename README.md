@@ -34,7 +34,7 @@ Think of it as the groundwork that saves you hours of setup, so you can focus on
 
 | Framework | Status              | Demo                              |
 |-----------|---------------------|-----------------------------------|
-| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-demo.vercel.app) |
+| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-nextjs.vercel.app) |
 | Express   | 🟡 Planned           | –                                 |
 
 ## Project Roadmap
