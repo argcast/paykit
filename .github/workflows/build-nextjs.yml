@@ -1,0 +1,34 @@
+name: Build Check Next.js App
+
+on:
+  push:
+    branches:
+      - nextjs
+  pull_request:
+    branches:
+      - nextjs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies (inside examples/nextjs)
+        working-directory: ./examples/nextjs
+        run: pnpm install
+
+      - name: Build project
+        working-directory: ./examples/nextjs
+        run: pnpm run build
