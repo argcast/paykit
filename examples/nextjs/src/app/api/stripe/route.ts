@@ -1,10 +1,9 @@
+import { stripe } from "@/lib/stripe/client";
 import { syncStripeDataToKV } from "@/lib/stripe/syncStripeDataToKV";
 import { tryCatch } from "@/lib/try-catch";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: Request) {
   const body = await req.text();
