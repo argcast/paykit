@@ -32,5 +32,11 @@ jobs:
 
       - name: Build project
         working-directory: ./examples/nextjs
+        env: 
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          KV_REST_API_TOKEN: ${{ secrets.KV_REST_API_TOKEN }}
+          KV_REST_API_URL: ${{ secrets.KV_REST_API_URL }}
+          PRICE_ID: ${{ secrets.PRICE_ID }}
+
         run: pnpm run build
 
