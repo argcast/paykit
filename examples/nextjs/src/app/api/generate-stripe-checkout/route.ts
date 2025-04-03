@@ -33,8 +33,8 @@ export async function GET() {
         quantity: 1,
       },
     ],
-    success_url: "http://localhost:3000/api/stripe/success", // Replace with your actual web url
-    cancel_url: "https://localhost:3000/api/stripe/cancel", // Replace with your actual web url
+    success_url: "https://paykit-nextjs.vercel.app/api/stripe/success", // Replace with your actual web url
+    cancel_url: "https://paykit-nextjs.vercel.app/api/stripe/cancel", // Replace with your actual web url
   });
 
   if (!checkout.url) {

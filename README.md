@@ -2,7 +2,7 @@
 
 # Paykit (WIP)
 
-A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to more frameworks in the future.
+A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to more frameworks in the future. This project is inspired by [Theo’s "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main), which lays out the clearest approach I’ve seen for managing the split-brain nature of Stripe data and your app state. Paykit builds on that idea to provide a fully installable, framework-ready implementation.
 
 ## Why this project exists
 
@@ -12,7 +12,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 - Unclear event flow
 - Race conditions between webhooks and frontend state
 
-This project is inspired by [Theo’s "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main), which lays out the clearest approach we’ve seen for managing the split-brain nature of Stripe data and your app state. Paykit builds on that idea to provide a fully installable, framework-ready implementation.
+![Alt text](./images/flow.png)
 
 ## What Paykit does
 
@@ -34,7 +34,7 @@ Think of it as the groundwork that saves you hours of setup, so you can focus on
 
 | Framework | Status              | Demo                              |
 |-----------|---------------------|-----------------------------------|
-| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-demo.vercel.app) |
+| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-nextjs.vercel.app) |
 | Express   | 🟡 Planned           | –                                 |
 
 ## Project Roadmap

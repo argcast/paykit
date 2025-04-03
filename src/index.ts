@@ -141,7 +141,7 @@ async function main() {
   );
   copyAndReplaceDomain(checkoutTemplate, checkoutTarget, domain);
 
-  const libBase = path.join(process.cwd(), "lib");
+  const libBase = path.join(process.cwd(), "src", "lib");
   const filesToCopy = [
     {
       from: path.join(templateRoot, "try-catch.ts"),
