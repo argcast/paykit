@@ -11,7 +11,8 @@ npx paykit-cli@latest
 The CLI will guide you through setting up a Stripe-connected project using Next.js. It includes:
 - Full Stripe integration (checkout, webhooks, sync)
 - KV store readiness
-
+  
+![cli](./images/showcase.gif)
 
 ## Why this project exists
 
@@ -21,7 +22,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 - Unclear event flow
 - Race conditions between webhooks and frontend state
 
-![Alt text](./images/flow.png)
+![Stripe Flow](./images/flow.png)
 
 ## What Paykit does
 
