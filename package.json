@@ -1,6 +1,6 @@
 {
   "name": "paykit-cli",
-  "version": "0.1.0-alpha.0",
+  "version": "1.0.0",
   "description": "CLI setup tool for Paykit Stripe integrations",
   "files": [
     "dist",
@@ -32,4 +32,3 @@
     "typescript": "^5.8.2"
   }
 }
-
