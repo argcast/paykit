@@ -37,9 +37,11 @@ Think of it as the groundwork that saves you hours of setup, so you can focus on
 | Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-nextjs.vercel.app) |
 | Express   | 🟡 Planned           | –                                 |
 
-## Project Roadmap
+## How To Contrubute & Project Roadmap
 
-See [`ROADMAP.md`](https://github.com/argcast/paykit/tree/main/ROADMAP.md) for upcoming integrations and contributions.
+Got feedback or want to contribute? Feel free to [reach out to me on X](https://x.com/arcastrodev) or open an issue.
+
+See [`ROADMAP.md`](https://github.com/argcast/paykit/tree/main/ROADMAP.md) for planned integrations and contributions.
 
 ## Credits & License
 
