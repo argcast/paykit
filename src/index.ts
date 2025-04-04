@@ -56,7 +56,6 @@ async function main() {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
     const deps = { ...pkg.dependencies, ...pkg.devDependencies };
     if (deps["next"]) framework = "Next.js";
-    else if (deps["express"]) framework = "Express";
   }
 
   if (!framework) {
@@ -65,7 +64,7 @@ async function main() {
         type: "list",
         name: "selected",
         message: "No framework detected. Please select one:",
-        choices: ["Next.js", "Express", "Other"],
+        choices: ["Next.js"],
       },
     ]);
     framework = selected;
@@ -195,39 +194,6 @@ async function main() {
   copyFile(cancelRoute, cancelTarget);
   copyFile(webhookRoute, webhookTarget);
 
-  // Auth detection
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
-  const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
-  let detectedAuth: "clerk" | "supabase" | "nextauth" | null = null;
-
-  if (allDeps["@clerk/nextjs"]) detectedAuth = "clerk";
-  else if (allDeps["@supabase/auth-helpers-nextjs"]) detectedAuth = "supabase";
-  else if (allDeps["next-auth"]) detectedAuth = "nextauth";
-
-  if (!detectedAuth) {
-    const { selectedAuth } = await inquirer.prompt([
-      {
-        type: "list",
-        name: "selectedAuth",
-        message: "Which auth provider are you using?",
-        choices: [
-          { name: "Clerk", value: "clerk" },
-          { name: "Supabase", value: "supabase" },
-          { name: "NextAuth (Auth.js)", value: "nextauth" },
-          { name: "None / I will do it manually", value: "none" },
-        ],
-      },
-    ]);
-    if (selectedAuth !== "none") {
-      detectedAuth = selectedAuth;
-    }
-  }
-
-  if (detectedAuth) {
-    injectAuthLogic(successTarget, detectedAuth);
-    injectAuthLogic(checkoutTarget, detectedAuth);
-  }
-
   updateEnvFile();
 
   console.log("✅ Stripe integration setup complete!");
@@ -244,7 +210,10 @@ function copyFile(from: string, to: string) {
 
   const content = fs.readFileSync(from, "utf-8");
   if (isDryRun) {
-    console.log(`🧪 Would write to ${to}:\n\n${content}\n`);
+    console.log(`🧪 Would write to ${to}:
+
+${content}
+`);
   } else {
     fs.writeFileSync(to, content, "utf-8");
     console.log(`✅ Created: ${path.relative(process.cwd(), to)}`);
@@ -262,66 +231,18 @@ function copyAndReplaceDomain(from: string, to: string, domain: string) {
 
   const content = fs.readFileSync(from, "utf-8").replace(/{{DOMAIN}}/g, domain);
   if (isDryRun) {
-    console.log(`🧪 Would write to ${to}:\n\n${content}\n`);
+    console.log(`🧪 Would write to ${to}:
+
+${content}
+`);
   } else {
     fs.writeFileSync(to, content, "utf-8");
     console.log(`✅ Created with domain: ${path.relative(process.cwd(), to)}`);
   }
 }
 
-function injectAuthLogic(
-  filePath: string,
-  provider: "clerk" | "supabase" | "nextauth",
-) {
-  let content = fs.readFileSync(filePath, "utf-8");
-
-  const userBlockRegex =
-    /[\t ]*\/\/ TODO: 🔐 Replace with your own auth system\n[\t ]*\/\/ Example: const user = await getUserId\(\);\n?/;
-
-  if (!userBlockRegex.test(content)) {
-    console.warn(`⚠️ No auth placeholder block found in ${filePath}`);
-    return;
-  }
-
-  let importStatements = "";
-  let userLogic = "";
-
-  if (provider === "clerk") {
-    importStatements = `import { auth, currentUser } from "@clerk/nextjs";`;
-    userLogic = `const { userId } = auth();\n  const user = await currentUser();`;
-  } else if (provider === "supabase") {
-    importStatements = `import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";`;
-    userLogic = `const supabase = createServerComponentClient();\n  const { data: { user } } = await supabase.auth.getUser();`;
-  } else if (provider === "nextauth") {
-    importStatements = `import { getServerSession } from "next-auth";\nimport { authOptions } from "@/lib/auth";`;
-    userLogic = `const session = await getServerSession(authOptions);\n  const user = session?.user;`;
-  }
-
-  // Insert import
-  const lines = content.split("\n");
-  const lastImportIndex = lines.reduce(
-    (last, line, idx) => (line.startsWith("import ") ? idx : last),
-    -1,
-  );
-  lines.splice(lastImportIndex + 1, 0, importStatements);
-
-  // Replace user logic block
-  const updatedContent = lines
-    .join("\n")
-    .replace(userBlockRegex, `${userLogic}\n`);
-
-  if (isDryRun) {
-    console.log(`🧪 Would inject into ${filePath}:\n\n${updatedContent}\n`);
-  } else {
-    fs.writeFileSync(filePath, updatedContent, "utf-8");
-    console.log(
-      `✨ Injected auth logic for ${provider} into: ${path.relative(process.cwd(), filePath)}`,
-    );
-  }
-}
-
 function updateEnvFile() {
-  const envPath = path.join(process.cwd(), ".env.local");
+  const envPath = path.join(process.cwd(), ".env");
   const required = [
     "STRIPE_SECRET_KEY=sk_test_...",
     "STRIPE_WEBHOOK_SECRET=whsec_...",
@@ -340,7 +261,9 @@ function updateEnvFile() {
   if (missing.length === 0) return;
 
   if (isDryRun) {
-    console.log(`🧪 Would update .env.local with:\n${missing.join("\n")}\n`);
+    console.log(`🧪 Would update .env with:
+${missing.join("\n")}
+`);
     return;
   }
 
