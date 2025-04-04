@@ -12,7 +12,7 @@ The CLI will guide you through setting up a Stripe-connected project using Next.
 - Full Stripe integration (checkout, webhooks, sync)
 - KV store readiness
   
-![cli](./images/showcase.gif)
+![cli](https://github.com/argcast/paykit/blob/main/images/showcase.gif)
 
 ## Why this project exists
 
@@ -22,7 +22,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 - Unclear event flow
 - Race conditions between webhooks and frontend state
 
-![Stripe Flow](./images/flow.png)
+![Stripe Flow](https://github.com/argcast/paykit/blob/main/images/flow.png)
 
 ## What Paykit does
 
