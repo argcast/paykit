@@ -1,8 +1,17 @@
 [![Build Next.js App](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml/badge.svg)](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml)
 
-# Paykit (WIP)
-
+# Paykit
 A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to more frameworks in the future. This project is inspired by [Theo’s "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main), which lays out the clearest approach I’ve seen for managing the split-brain nature of Stripe data and your app state. Paykit builds on that idea to provide a fully installable, framework-ready implementation.
+
+> 💡 **Quick Start**
+
+```bash
+npx paykit-cli@latest
+```
+The CLI will guide you through setting up a Stripe-connected project using Next.js. It includes:
+- Full Stripe integration (checkout, webhooks, sync)
+- KV store readiness
+
 
 ## Why this project exists
 
