@@ -1,4 +1,5 @@
 [![Build Next.js App](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml/badge.svg)](https://github.com/argcast/paykit/actions/workflows/build-nextjs.yml)
+[![npm](https://img.shields.io/npm/v/paykit-cli)](https://www.npmjs.com/package/paykit-cli)
 
 # Paykit
 A plug-and-play Stripe integration kit for modern JavaScript frameworks — starting with **Next.js**, and expanding to more frameworks in the future. This project is inspired by [Theo’s "How I Stay Sane Implementing Stripe"](https://github.com/t3dotgg/stripe-recommendations/tree/main), which lays out the clearest approach I’ve seen for managing the split-brain nature of Stripe data and your app state. Paykit builds on that idea to provide a fully installable, framework-ready implementation.
@@ -11,8 +12,7 @@ npx paykit-cli@latest
 The CLI will guide you through setting up a Stripe-connected project using Next.js. It includes:
 - Full Stripe integration (checkout, webhooks, sync)
 - KV store readiness
-  
-![cli](https://github.com/argcast/paykit/blob/main/images/showcase.gif)
+
 
 ## Why this project exists
 
@@ -22,7 +22,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 - Unclear event flow
 - Race conditions between webhooks and frontend state
 
-![Stripe Flow](https://github.com/argcast/paykit/blob/main/images/flow.png)
+![Alt text](./images/flow.png)
 
 ## What Paykit does
 
@@ -31,7 +31,7 @@ Stripe is powerful — but integrating it properly is often a painful mix of:
 - Provides a single `syncStripeDataToKV(customerId)` method to eliminate inconsistencies
 - Responds to relevant Stripe webhook events
 - Offers prebuilt route handlers and helpers tailored to each supported framework
-- You should carefully read [things that are still your problem](https://github.com/t3dotgg/stripe-recommendations?tab=readme-ov-file#things-that-are-still-your-problem) even we preset most of them in your `env.local` file.
+- You should carefully read [things that are still your problem](https://github.com/t3dotgg/stripe-recommendations?tab=readme-ov-file#things-that-are-still-your-problem). Setting up Stripe webhook pointing to your app is a thing you must do. Setting the correct environment variables is also up to you even we preset most of them in your `env.local` file for you to complete.
 
 ## What Paykit is *not*
 
@@ -44,8 +44,8 @@ Think of it as the groundwork that saves you hours of setup, so you can focus on
 
 | Framework | Status              | Demo                              |
 |-----------|---------------------|-----------------------------------|
-| Next.js   | ✅ In progress (MVP) | [Live Demo](https://paykit-nextjs.vercel.app) |
-| Express   | 🟡 Planned           | –                                 |
+| Next.js   | ✅ Completed        | [Live Demo](https://paykit-nextjs.vercel.app) |
+| Express   | 🔜 At 10 repo stars | –                                 |
 
 ## How To Contrubute & Project Roadmap
 
